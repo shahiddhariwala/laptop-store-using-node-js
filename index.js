@@ -67,7 +67,6 @@ const server = http.createServer((req, res) => {
     {
         fileSystem.readFile(`${__dirname}/${pathName}`,(err,data)=>
         {
-            console.log(pathName);
             res.writeHead(200, {
                 "Content-type": "image/jpg",
             });
