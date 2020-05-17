@@ -1,3 +1,11 @@
+/*
+Code by  : Shahid Dhariwala
+LinkedIn : https://www.linkedin.com/in/shahiddhariwala/
+Twitter  : https://twitter.com/shahiddhariwala
+Date     : 17-May-2020
+*/
+
+
 console.log("Node Start !!");
 
 //adding fs module
@@ -33,7 +41,20 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, {
             "Content-type": "text/html",
         });
-        res.end(`This is the Laptop Page for Laptop with id ${id}`);
+        fileSystem.readFile(`${__dirname}/data/templates/template-laptop.html`,'utf-8',(err,data)=>
+        {
+            
+            const laptop = laptopData[id];
+            let output = data.replace(/{%PRODUCTNAME%}/g,laptop.productName);
+            output = output.replace(/{%PRICE%}/g,laptop.price);
+            output = output.replace(/{%IMAGE%}/g,laptop.image);
+            output = output.replace(/{%CPU%}/g,laptop.cpu);
+            output = output.replace(/{%STORAGE%}/g,laptop.storage);
+            output = output.replace(/{%RAM%}/g,laptop.ram);
+            output = output.replace(/{%DESCRIPTION%}/g,laptop.description);
+            output = output.replace(/{%SCREEN%}/g,laptop.screen);
+            res.end(output);
+        });
     } else {
         res.writeHead(404, {
             "Content-type": "text/html",
@@ -43,6 +64,6 @@ const server = http.createServer((req, res) => {
 });
 
 //now we need listener port on our server, so that someone can access it
-server.listen(1337, "127.0.0.1", () => {
+server.listen(1338, "127.0.0.1", () => {
     console.log("Started listening for request now ! ");
 });
