@@ -40,9 +40,13 @@ const server = http.createServer((req, res) => {
 
         fileSystem.readFile(`${__dirname}/data/templates/template-overview.html`, 'utf-8', (err, data) => {
 
-            // const laptop = laptopData[id];
-            // const output = replaceTemplate(data, laptop)
-            res.end(data);
+            let overviewOutput =data;
+            fileSystem.readFile(`${__dirname}/data/templates/template-card.html`, 'utf-8', (err, cdata) => {
+               
+                const cardsOutput = laptopData.map(el => replaceTemplate(cdata,el)).join('');
+                overviewOutput = overviewOutput.replace('{%CARDS%}',cardsOutput);
+                res.end(overviewOutput);
+            });
         });
         
     } 
