@@ -62,6 +62,18 @@ const server = http.createServer((req, res) => {
             res.end(output);
         });
     } 
+    //IMAGES
+    else if ((/\.(jpg|jpeg|gif|png)$/i).test(pathName))
+    {
+        fileSystem.readFile(`${__dirname}/${pathName}`,(err,data)=>
+        {
+            console.log(pathName);
+            res.writeHead(200, {
+                "Content-type": "image/jpg",
+            });
+            res.end(data);
+        });
+    }
     //URL NOT FOUND
     else {
         res.writeHead(404, {
@@ -72,7 +84,7 @@ const server = http.createServer((req, res) => {
 });
 
 //now we need listener port on our server, so that someone can access it
-server.listen(1338, "127.0.0.1", () => {
+server.listen(8080, "127.0.0.1", () => {
     console.log("Started listening for request now ! ");
 });
 

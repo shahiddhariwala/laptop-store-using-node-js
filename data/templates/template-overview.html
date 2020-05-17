@@ -13,7 +13,6 @@ Date     : 17-May-2020
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Nunito+Sans" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
     <title>The Laptop Store!</title>
 
@@ -172,6 +171,20 @@ Date     : 17-May-2020
             font-size: 2rem;
             margin-left: 1rem;
         }
+
+        /* footer */
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3%;
+            background: linear-gradient(to right, #4ca2cd,#67b26f);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+        }
     </style>
 </head>
 
@@ -179,9 +192,10 @@ Date     : 17-May-2020
     <div class="container">
         <h1>The Laptop Store!</h1>
         <div class="cards-container">
-{%CARDS%}
+            {%CARDS%}
         </div>
     </div>
+    <footer class="footer">Made with Fun by Shahid Dhariwala 💙</footer>
 </body>
 
 </html>
