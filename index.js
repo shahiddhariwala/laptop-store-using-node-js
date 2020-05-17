@@ -18,7 +18,9 @@ const laptopData = JSON.parse(json); // converts to JSON object
 // will create a server
 const server = http.createServer((req,res)=>
 {
-    console.log("Someone accesed the server !");
+    //header 200 for ok , content type
+    res.writeHead(200,{'Content-type':'text/html'});
+    res.end('This is the response ');
 });
 
 //now we need listener port on our server, so that someone can access it
